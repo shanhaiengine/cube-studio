@@ -1,5 +1,6 @@
 import copy
 import math
+import logging
 from flask import Markup,g
 from jinja2 import Environment, BaseLoader, DebugUndefined
 from myapp import app, appbuilder, db
@@ -34,6 +35,7 @@ def node_traffic():
 
         all_node_json = {}
         clusters = conf.get('CLUSTERS', {})
+        # logging.info(f"[log] clusters: {clusters}")
         for cluster_name in clusters:
             try:
                 cluster = clusters[cluster_name]
@@ -49,16 +51,160 @@ def node_traffic():
                         "used_memory": 0,
                         "used_gpu": 0
                     })
-                    # print(node_allocated_resources)
                     all_node_json[cluster_name][node['hostip']].update(node_allocated_resources)
             except Exception as e:
                 print(e)
+            logging.info(f"[log] all_node_json: {all_node_json}")
+
+
+        # 手动添加模拟数据
+        # mock 机器负载
+        all_node_json[cluster_name] = {
+            "172.16.13.50": {
+                "cpu": 127,
+                "memory": 1005,
+                "labels": {
+                "beta.kubernetes.io/arch": "amd64",
+                "beta.kubernetes.io/os": "linux",
+                "cpu": "true",
+                "istio": "true",
+                "kubeflow": "true",
+                "kubeflow-dashboard": "true",
+                "kubernetes.io/arch": "amd64",
+                "kubernetes.io/hostname": "172.16.13.50",
+                "kubernetes.io/os": "linux",
+                "logging": "true",
+                "monitoring": "true",
+                "mysql": "true",
+                "node-role.kubernetes.io/controlplane": "true",
+                "node-role.kubernetes.io/etcd": "true",
+                "node-role.kubernetes.io/worker": "true",
+                "notebook": "true",
+                "org": "public",
+                "redis": "true",
+                "service": "true",
+                "train": "true"
+                },
+                "name": "172.16.13.50",
+                "create_time": "2025-02-25 12:07:28",
+                "node_info": {
+                "architecture": "amd64",
+                "boot_id": "fa0a0038-2406-4e9d-b1d3-af55d8b91596",
+                "container_runtime_version": "docker://27.4.1",
+                "kernel_version": "5.15.0-130-generic",
+                "kube_proxy_version": "v1.25.16",
+                "kubelet_version": "v1.25.16",
+                "machine_id": "71a01ddc75484a7ea6a79e1372cfeac1",
+                "operating_system": "linux",
+                "os_image": "Ubuntu 22.04.4 LTS",
+                "system_uuid": "5ec4c29c-46de-03e5-0010-debf6060f071"
+                },
+                "status": "Ready",
+                "gpu": 0,
+                "hostip": "172.16.13.50",
+                "used_memory": 9,
+                "used_cpu": 6,
+                "used_gpu": 0
+            },
+            "172.16.13.51": {
+                "cpu": 128,
+                "memory": 1005,
+                "labels": {
+                "beta.kubernetes.io/arch": "amd64",
+                "beta.kubernetes.io/os": "linux",
+                "cpu": "true",
+                "istio": "true",
+                "kubeflow": "true",
+                "kubeflow-dashboard": "true",
+                "kubernetes.io/arch": "amd64",
+                "kubernetes.io/hostname": "172.16.13.51",
+                "kubernetes.io/os": "linux",
+                "logging": "true",
+                "monitoring": "true",
+                "mysql": "true",
+                "node-role.kubernetes.io/controlplane": "true",
+                "node-role.kubernetes.io/etcd": "true",
+                "node-role.kubernetes.io/worker": "true",
+                "notebook": "true",
+                "org": "public",
+                "redis": "true",
+                "service": "true",
+                "train": "true"
+                },
+                "name": "172.16.13.51",
+                "create_time": "2025-02-26 16:07:28",
+                "node_info": {
+                "architecture": "amd64",
+                "boot_id": "fa0a0038-2406-4e9d-b1d3-af55d8b91596",
+                "container_runtime_version": "docker://27.4.1",
+                "kernel_version": "5.15.0-130-generic",
+                "kube_proxy_version": "v1.25.16",
+                "kubelet_version": "v1.25.16",
+                "machine_id": "71a01ddc75484a7ea6a79e1372cfeac1",
+                "operating_system": "linux",
+                "os_image": "Ubuntu 22.04.4 LTS",
+                "system_uuid": "5ec4c29c-46de-03e5-0010-debf6060f071"
+                },
+                "status": "Ready",
+                "gpu": 0,
+                "hostip": "172.16.13.51",
+                "used_memory": 9,
+                "used_cpu": 6,
+                "used_gpu": 0
+            },
+            "172.16.13.52": {
+                "cpu": 64,
+                "memory": 1005,
+                "labels": {
+                "beta.kubernetes.io/arch": "amd64",
+                "beta.kubernetes.io/os": "linux",
+                "cpu": "true",
+                "istio": "true",
+                "kubeflow": "true",
+                "kubeflow-dashboard": "true",
+                "kubernetes.io/arch": "amd64",
+                "kubernetes.io/hostname": "172.16.13.52",
+                "kubernetes.io/os": "linux",
+                "logging": "true",
+                "monitoring": "true",
+                "mysql": "true",
+                "node-role.kubernetes.io/controlplane": "true",
+                "node-role.kubernetes.io/etcd": "true",
+                "node-role.kubernetes.io/worker": "true",
+                "notebook": "true",
+                "org": "public",
+                "redis": "true",
+                "service": "true",
+                "train": "true"
+                },
+                "name": "172.16.13.52",
+                "create_time": "2025-02-26 16:07:28",
+                "node_info": {
+                "architecture": "amd64",
+                "boot_id": "fa0a0038-2406-4e9d-b1d3-af55d8b91596",
+                "container_runtime_version": "docker://27.4.1",
+                "kernel_version": "5.15.0-130-generic",
+                "kube_proxy_version": "v1.25.16",
+                "kubelet_version": "v1.25.16",
+                "machine_id": "71a01ddc75484a7ea6a79e1372cfeac1",
+                "operating_system": "linux",
+                "os_image": "Ubuntu 22.04.4 LTS",
+                "system_uuid": "5ec4c29c-46de-03e5-0010-debf6060f071"
+                },
+                "status": "Ready",
+                "gpu": 0,
+                "hostip": "172.16.13.52",
+                "used_memory": 9,
+                "used_cpu": 6,
+                "used_gpu": 0
+            }
+        }
+        # 
 
         node_resource_used['data'] = all_node_json
         node_resource_used['check_time'] = datetime.datetime.now()
 
     all_node_json = node_resource_used['data']
-    # print(all_node_json)
     # 数据格式说明 dict:
     # 'delay': Integer 延时隐藏 单位: 毫秒 0为不隐藏
     # 'hit': Boolean 是否命中
@@ -84,6 +230,8 @@ def node_traffic():
             "gpu_all": 0
         }
         nodes = all_node_json[cluster_name]
+        # logging.info(f"[log] nodes: {nodes}")
+
         # nodes = sorted(nodes.items(), key=lambda item: item[1]['labels'].get('org','public'))
         # ips = [node[0] for node in nodes]
         # values = [node[1] for node in nodes]
@@ -268,6 +416,8 @@ def pod_resource():
                         "start_time":pod['start_time']
                     }
                     all_pod_resource.append(pod_resource)
+
+    logging.info(f"[log] all_tasks_json: {all_tasks_json}")
     return all_pod_resource
 
 
@@ -327,6 +477,62 @@ class Total_Resource_ModelView_Api(MyappFormRestApi):
     def query_list(self, order_column, order_direction, page_index, page_size, filters=None, **kargs):
 
         lst = pod_resource()
+        logging.info(f"[log] lst: {lst}")
+        # mock 运行资源列表数据
+        lst.extend([
+            {
+                'cluster': 'dev',
+                'project': 'public',
+                'resource_group': 'public',
+                'namespace': Markup(
+                    '<a target="blank" href="/k8s/web/search/dev/service/volcano-20250101-75459d00r2-abcde">service</a>'
+                ),
+                'pod': Markup(
+                    '<a target="blank" href="//172.16.13.51/grafana/d/pod-info/pod-info?var-pod=volcano-20250101-75459d00r2-abcde">volcano-20250101-75459d00r2-abcde</a>'
+                ),
+                'pod_info': 'dev:service:public:volcano-20250101-75459d00r2-abcde',
+                'label': {
+                    'app': 'volcano-20250101',
+                    'pod-template-hash': '75459d47d9',
+                    'pod-type': 'inference',
+                    'user': 'admin'
+                },
+                'username': 'admin',
+                'node': Markup(
+                    '<a target="blank" href="//172.16.13.51/grafana/d/node/node?var-node=172.16.13.51">172.16.13.51</a>'
+                ),
+                'cpu': '3/5',
+                'memory': '4/5',
+                'gpu': '8.0',
+                'start_time': '2025-02-24 12:00:28'
+            },{
+                'cluster': 'dev',
+                'project': 'public',
+                'resource_group': 'public',
+                'namespace': Markup(
+                    '<a target="blank" href="/k8s/web/search/dev/service/nlp-process-20240601-12349d47d9-qazws">service</a>'
+                ),
+                'pod': Markup(
+                    '<a target="blank" href="//172.16.13.52/grafana/d/pod-info/pod-info?var-pod=nlp-process-20240601-12349d47d9-qazws">nlp-process-20240601-12349d47d9-qazws</a>'
+                ),
+                'pod_info': 'dev:service:public:nlp-process-20240601-12349d47d9-qazws',
+                'label': {
+                    'app': 'nlp-process-20240601',
+                    'pod-template-hash': '75459d47d9',
+                    'pod-type': 'inference',
+                    'user': 'admin'
+                },
+                'username': 'admin',
+                'node': Markup(
+                    '<a target="blank" href="//172.16.13.52/grafana/d/node/node?var-node=172.16.13.52">172.16.13.52</a>'
+                ),
+                'cpu': '2/5',
+                'memory': '2/5',
+                'gpu': '2.0',
+                'start_time': '2025-02-25 16:07:28'
+            }
+        ])
+        
 
         # 非管理员只查看自己的
         if not g.user.is_admin():
@@ -343,6 +549,7 @@ class Total_Resource_ModelView_Api(MyappFormRestApi):
     # @pysnooper.snoop()
     def echart_option(self, filters=None):
         global global_cluster_load
+        # logging.info(f"[log] global_cluster_load: {global_cluster_load}")
 
         if not global_cluster_load:
             node_resource_used['check_time'] = None
@@ -353,22 +560,34 @@ class Total_Resource_ModelView_Api(MyappFormRestApi):
         # prometheus = Prometheus('9.135.92.226:15046')
 
         pod_resource_metric = prometheus.get_resource_metric()
+        # logging.info(f"[log] pod_resource_metric: {pod_resource_metric}")
 
-        all_resource={
-            "mem_all": sum([int(global_cluster_load[cluster_name]['mem_all']) for cluster_name in global_cluster_load]),
-            "cpu_all": sum([int(global_cluster_load[cluster_name]['cpu_all']) for cluster_name in global_cluster_load]),
-            "gpu_all": sum([int(global_cluster_load[cluster_name]['gpu_all']) for cluster_name in global_cluster_load]),
-        }
-        all_resource_req = {
-            "mem_req": sum([int(global_cluster_load[cluster_name]['mem_req']) for cluster_name in global_cluster_load]),
-            "cpu_req": sum([int(global_cluster_load[cluster_name]['cpu_req']) for cluster_name in global_cluster_load]),
-            "gpu_req": sum([int(global_cluster_load[cluster_name]['gpu_req']) for cluster_name in global_cluster_load]),
-        }
-        all_resource_used = {
-            "mem_used": sum([pod_resource_metric[x].get('memory',0) for x in pod_resource_metric]),
-            "cpu_used": sum([pod_resource_metric[x].get('cpu',0) for x in pod_resource_metric]),
-            "gpu_used": sum([pod_resource_metric[x].get('gpu',0) for x in pod_resource_metric]),
-        }
+        # all_resource={
+        #     # "mem_all": sum(99),
+        #     "mem_all": sum([int(global_cluster_load[cluster_name]['mem_all']) for cluster_name in global_cluster_load]),
+        #     "cpu_all": sum([int(global_cluster_load[cluster_name]['cpu_all']) for cluster_name in global_cluster_load]),
+        #     "gpu_all": sum([int(global_cluster_load[cluster_name]['gpu_all']) for cluster_name in global_cluster_load]),
+        # }
+        # all_resource_req = {
+        #     "mem_req": sum([int(global_cluster_load[cluster_name]['mem_req']) for cluster_name in global_cluster_load]),
+        #     "cpu_req": sum([int(global_cluster_load[cluster_name]['cpu_req']) for cluster_name in global_cluster_load]),
+        #     "gpu_req": sum([int(global_cluster_load[cluster_name]['gpu_req']) for cluster_name in global_cluster_load]),
+        # }
+        # all_resource_used = {
+        #     "mem_used": sum([pod_resource_metric[x].get('memory',0) for x in pod_resource_metric]),
+        #     "cpu_used": sum([pod_resource_metric[x].get('cpu',0) for x in pod_resource_metric]),
+        #     "gpu_used": sum([pod_resource_metric[x].get('gpu',0) for x in pod_resource_metric]),
+        # }
+
+        # mock dashboard
+        all_resource =  {'mem_all': 1005, 'cpu_all': 128, 'gpu_all': 24}
+        all_resource_req = {'mem_req': 800, 'cpu_req': 92, 'gpu_req': 20}
+        all_resource_used = {'mem_used': 720, 'cpu_used':80, 'gpu_used': 20}
+        #
+
+        # logging.info(f"[log] all_resource: {all_resource}")
+        # logging.info(f"[log] all_resource_req: {all_resource_req}")
+        # logging.info(f"[log] all_resource_used: {all_resource_used}")
 
         resource_options = open('myapp/utils/echart/resource.txt').read()
         chat1 = copy.deepcopy(resource_options)
@@ -422,6 +641,7 @@ class Total_Resource_ModelView_Api(MyappFormRestApi):
         '''
         option=option.replace('DATA',DATA)
         option = option.replace('集群信息',__('集群信息')).replace('资源占用率',__('资源占用率')).replace('资源利用率',__('资源利用率'))
+        logging.info(f"[log] option: {option}")
 
         return option
 
