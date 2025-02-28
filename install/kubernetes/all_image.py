@@ -51,8 +51,8 @@ pipeline = [
 ]
 cube_studio = [
     # 前后端
-    'ccr.ccs.tencentyun.com/cube-studio/kubeflow-dashboard-frontend:2025.01.01',
-    'ccr.ccs.tencentyun.com/cube-studio/kubeflow-dashboard:2025.01.01',
+    'docker.io/crofi/kubeflow-dashboard-frontend:20250228-ubuntu-arm',
+    'docker.io/crofi/kubeflow-dashboard:20250228-ubuntu-arm',
     # notebook基础镜像
     'ccr.ccs.tencentyun.com/cube-studio/notebook:vscode-ubuntu-cpu-base',
     'ccr.ccs.tencentyun.com/cube-studio/notebook:vscode-ubuntu-gpu-base',
