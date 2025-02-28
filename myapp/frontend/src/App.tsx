@@ -342,16 +342,17 @@ const AppWrapper = (props: IProps) => {
         isShowNav === 'false' ? null : <div className="navbar">
           <div className="d-f ac pl48 h100">
             <div className="d-f ac">
-              <div className="cp pr16" style={{ width: 'auto' }} onClick={() => {
+              <div className="cp pr32" style={{ width: 'auto' }} onClick={() => {
                 navigate('/', { replace: true })
               }}>
-                <img style={{ height: 42 }} src={globalConfig.appLogo.default} alt="img" />
+                <img style={{ height: 40 }} src={globalConfig.appLogo.default} alt="img" />
               </div>
 
               {
                 renderSingleModule()
               }
             </div>
+            <div style={{ fontSize: 20, width:375 }}>武汉联通智算项目监控平台</div>
             <div className="star-topmenu">
               <Menu mode="horizontal" selectedKeys={navSelected}>
                 {renderNavTopMenu()}
@@ -411,7 +412,7 @@ const AppWrapper = (props: IProps) => {
               style={{ position: 'absolute', height: 'calc(100vh - 100px)', top: '10%', ...customDialogInfo?.style }}
               bodyStyle={{ padding: 0 }}
               mask={false}
-              contentWrapperStyle={{ width: 'auto' }}
+              contentWrapperStyle={{ width:  'auto' }}
               title={customDialogInfo?.title} placement="right" onClose={() => { setCustomDialogVisable(false) }}
               visible={customDialogVisable}>
               <div className="h100" dangerouslySetInnerHTML={{ __html: customDialogInfo?.content || '' }}></div>
@@ -431,6 +432,9 @@ const AppWrapper = (props: IProps) => {
         }
 
       </div >
+
+      {/* <div style={{textAlign:'center',fontWeight:'bolder',padding:2}}>由悦科数据｜山海引擎提供技术服务支持</div> */}
+      <div style={{textAlign:'center',fontWeight:'bolder',padding:2,fontSize:15}}>由<img style={{ height: 23,verticalAlign:'top',padding:'0 8px'}} src={globalConfig.supLogo.default} alt="yueke logo" />提供技术服务支持</div>
     </div>
   );
 };
