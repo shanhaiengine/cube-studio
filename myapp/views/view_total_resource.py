@@ -14,6 +14,7 @@ from flask_babel import lazy_gettext as _
 import datetime, time, json
 import pysnooper
 from myapp.utils.py.py_k8s import K8s
+from myapp.utils.mock import mock_data1, mock_data2, mock_data3
 
 conf = app.config
 
@@ -59,146 +60,7 @@ def node_traffic():
 
         # 手动添加模拟数据
         # mock 机器负载
-        all_node_json[cluster_name] = {
-            "172.16.13.50": {
-                "cpu": 127,
-                "memory": 1005,
-                "labels": {
-                "beta.kubernetes.io/arch": "amd64",
-                "beta.kubernetes.io/os": "linux",
-                "cpu": "true",
-                "istio": "true",
-                "kubeflow": "true",
-                "kubeflow-dashboard": "true",
-                "kubernetes.io/arch": "amd64",
-                "kubernetes.io/hostname": "172.16.13.50",
-                "kubernetes.io/os": "linux",
-                "logging": "true",
-                "monitoring": "true",
-                "mysql": "true",
-                "node-role.kubernetes.io/controlplane": "true",
-                "node-role.kubernetes.io/etcd": "true",
-                "node-role.kubernetes.io/worker": "true",
-                "notebook": "true",
-                "org": "public",
-                "redis": "true",
-                "service": "true",
-                "train": "true"
-                },
-                "name": "172.16.13.50",
-                "create_time": "2025-02-25 12:07:28",
-                "node_info": {
-                "architecture": "amd64",
-                "boot_id": "fa0a0038-2406-4e9d-b1d3-af55d8b91596",
-                "container_runtime_version": "docker://27.4.1",
-                "kernel_version": "5.15.0-130-generic",
-                "kube_proxy_version": "v1.25.16",
-                "kubelet_version": "v1.25.16",
-                "machine_id": "71a01ddc75484a7ea6a79e1372cfeac1",
-                "operating_system": "linux",
-                "os_image": "Ubuntu 22.04.4 LTS",
-                "system_uuid": "5ec4c29c-46de-03e5-0010-debf6060f071"
-                },
-                "status": "Ready",
-                "gpu": 0,
-                "hostip": "172.16.13.50",
-                "used_memory": 9,
-                "used_cpu": 6,
-                "used_gpu": 0
-            },
-            "172.16.13.51": {
-                "cpu": 128,
-                "memory": 1005,
-                "labels": {
-                "beta.kubernetes.io/arch": "amd64",
-                "beta.kubernetes.io/os": "linux",
-                "cpu": "true",
-                "istio": "true",
-                "kubeflow": "true",
-                "kubeflow-dashboard": "true",
-                "kubernetes.io/arch": "amd64",
-                "kubernetes.io/hostname": "172.16.13.51",
-                "kubernetes.io/os": "linux",
-                "logging": "true",
-                "monitoring": "true",
-                "mysql": "true",
-                "node-role.kubernetes.io/controlplane": "true",
-                "node-role.kubernetes.io/etcd": "true",
-                "node-role.kubernetes.io/worker": "true",
-                "notebook": "true",
-                "org": "public",
-                "redis": "true",
-                "service": "true",
-                "train": "true"
-                },
-                "name": "172.16.13.51",
-                "create_time": "2025-02-26 16:07:28",
-                "node_info": {
-                "architecture": "amd64",
-                "boot_id": "fa0a0038-2406-4e9d-b1d3-af55d8b91596",
-                "container_runtime_version": "docker://27.4.1",
-                "kernel_version": "5.15.0-130-generic",
-                "kube_proxy_version": "v1.25.16",
-                "kubelet_version": "v1.25.16",
-                "machine_id": "71a01ddc75484a7ea6a79e1372cfeac1",
-                "operating_system": "linux",
-                "os_image": "Ubuntu 22.04.4 LTS",
-                "system_uuid": "5ec4c29c-46de-03e5-0010-debf6060f071"
-                },
-                "status": "Ready",
-                "gpu": 0,
-                "hostip": "172.16.13.51",
-                "used_memory": 9,
-                "used_cpu": 6,
-                "used_gpu": 0
-            },
-            "172.16.13.52": {
-                "cpu": 64,
-                "memory": 1005,
-                "labels": {
-                "beta.kubernetes.io/arch": "amd64",
-                "beta.kubernetes.io/os": "linux",
-                "cpu": "true",
-                "istio": "true",
-                "kubeflow": "true",
-                "kubeflow-dashboard": "true",
-                "kubernetes.io/arch": "amd64",
-                "kubernetes.io/hostname": "172.16.13.52",
-                "kubernetes.io/os": "linux",
-                "logging": "true",
-                "monitoring": "true",
-                "mysql": "true",
-                "node-role.kubernetes.io/controlplane": "true",
-                "node-role.kubernetes.io/etcd": "true",
-                "node-role.kubernetes.io/worker": "true",
-                "notebook": "true",
-                "org": "public",
-                "redis": "true",
-                "service": "true",
-                "train": "true"
-                },
-                "name": "172.16.13.52",
-                "create_time": "2025-02-26 16:07:28",
-                "node_info": {
-                "architecture": "amd64",
-                "boot_id": "fa0a0038-2406-4e9d-b1d3-af55d8b91596",
-                "container_runtime_version": "docker://27.4.1",
-                "kernel_version": "5.15.0-130-generic",
-                "kube_proxy_version": "v1.25.16",
-                "kubelet_version": "v1.25.16",
-                "machine_id": "71a01ddc75484a7ea6a79e1372cfeac1",
-                "operating_system": "linux",
-                "os_image": "Ubuntu 22.04.4 LTS",
-                "system_uuid": "5ec4c29c-46de-03e5-0010-debf6060f071"
-                },
-                "status": "Ready",
-                "gpu": 0,
-                "hostip": "172.16.13.52",
-                "used_memory": 9,
-                "used_cpu": 6,
-                "used_gpu": 0
-            }
-        }
+        all_node_json[cluster_name] = mock_data1(200)
         # 
 
         node_resource_used['data'] = all_node_json
@@ -453,14 +315,18 @@ class Total_Resource_ModelView_Api(MyappFormRestApi):
         "gpu": _("AI卡使用"),
         "start_time":_("创建时间")
     }
+    # todo 替换url
+    grafana_url = "http://192.168.100.33:3000/d/feet98t05tam8d/cube-s?orgId=1&from=now-15m&to=now&timezone=browser"
     ops_link = [
         {
             "text": _("gpu资源监控"),
-            "url": conf.get('GRAFANA_GPU_PATH')
+            # "url": conf.get('GRAFANA_GPU_PATH')
+            "url": grafana_url
         },
         {
             "text": _("集群负载"),
-            "url": conf.get('GRAFANA_CLUSTER_PATH')
+            # "url": conf.get('GRAFANA_CLUSTER_PATH')
+            "url": grafana_url
         }
     ]
     label_title = _('整体资源')
@@ -476,63 +342,11 @@ class Total_Resource_ModelView_Api(MyappFormRestApi):
 
     def query_list(self, order_column, order_direction, page_index, page_size, filters=None, **kargs):
 
-        lst = pod_resource()
-        logging.info(f"[log] lst: {lst}")
+        # lst = pod_resource()
         # mock 运行资源列表数据
-        lst.extend([
-            {
-                'cluster': 'dev',
-                'project': 'public',
-                'resource_group': 'public',
-                'namespace': Markup(
-                    '<a target="blank" href="/k8s/web/search/dev/service/volcano-20250101-75459d00r2-abcde">service</a>'
-                ),
-                'pod': Markup(
-                    '<a target="blank" href="//172.16.13.51/grafana/d/pod-info/pod-info?var-pod=volcano-20250101-75459d00r2-abcde">volcano-20250101-75459d00r2-abcde</a>'
-                ),
-                'pod_info': 'dev:service:public:volcano-20250101-75459d00r2-abcde',
-                'label': {
-                    'app': 'volcano-20250101',
-                    'pod-template-hash': '75459d47d9',
-                    'pod-type': 'inference',
-                    'user': 'admin'
-                },
-                'username': 'admin',
-                'node': Markup(
-                    '<a target="blank" href="//172.16.13.51/grafana/d/node/node?var-node=172.16.13.51">172.16.13.51</a>'
-                ),
-                'cpu': '3/5',
-                'memory': '4/5',
-                'gpu': '8.0',
-                'start_time': '2025-02-24 12:00:28'
-            },{
-                'cluster': 'dev',
-                'project': 'public',
-                'resource_group': 'public',
-                'namespace': Markup(
-                    '<a target="blank" href="/k8s/web/search/dev/service/nlp-process-20240601-12349d47d9-qazws">service</a>'
-                ),
-                'pod': Markup(
-                    '<a target="blank" href="//172.16.13.52/grafana/d/pod-info/pod-info?var-pod=nlp-process-20240601-12349d47d9-qazws">nlp-process-20240601-12349d47d9-qazws</a>'
-                ),
-                'pod_info': 'dev:service:public:nlp-process-20240601-12349d47d9-qazws',
-                'label': {
-                    'app': 'nlp-process-20240601',
-                    'pod-template-hash': '75459d47d9',
-                    'pod-type': 'inference',
-                    'user': 'admin'
-                },
-                'username': 'admin',
-                'node': Markup(
-                    '<a target="blank" href="//172.16.13.52/grafana/d/node/node?var-node=172.16.13.52">172.16.13.52</a>'
-                ),
-                'cpu': '2/5',
-                'memory': '2/5',
-                'gpu': '2.0',
-                'start_time': '2025-02-25 16:07:28'
-            }
-        ])
-        
+        lst = mock_data2(200)
+        logging.info(f"[log] lst: {lst}")
+        #
 
         # 非管理员只查看自己的
         if not g.user.is_admin():
@@ -580,9 +394,13 @@ class Total_Resource_ModelView_Api(MyappFormRestApi):
         # }
 
         # mock dashboard
-        all_resource =  {'mem_all': 1005, 'cpu_all': 128, 'gpu_all': 24}
-        all_resource_req = {'mem_req': 800, 'cpu_req': 92, 'gpu_req': 20}
-        all_resource_used = {'mem_used': 720, 'cpu_used':80, 'gpu_used': 20}
+        # all_resource =  {'mem_all': 1005, 'cpu_all': 128, 'gpu_all': 24}
+        # all_resource_req = {'mem_req': 800, 'cpu_req': 92, 'gpu_req': 20}
+        # all_resource_used = {'mem_used': 720, 'cpu_used':80, 'gpu_used': 20}
+        mock_all_resource = mock_data3()
+        all_resource = mock_all_resource['all_resource']
+        all_resource_req = mock_all_resource['all_resource_req']
+        all_resource_used = mock_all_resource['all_resource_used']
         #
 
         # logging.info(f"[log] all_resource: {all_resource}")
@@ -591,7 +409,7 @@ class Total_Resource_ModelView_Api(MyappFormRestApi):
 
         resource_options = open('myapp/utils/echart/resource.txt').read()
         chat1 = copy.deepcopy(resource_options)
-        chat1 = chat1.replace('MEM_NAME', __('内存总量(G)')).replace('MEM_CENTER_X', '7%').replace('MEM_VALUE', str(int(all_resource['mem_all'])))
+        chat1 = chat1.replace('MEM_NAME', __('内存总量(T)')).replace('MEM_CENTER_X', '7%').replace('MEM_VALUE', str(int(all_resource['mem_all'])))
         chat1 = chat1.replace('CPU_NAME', __('CPU总量(核)')).replace('CPU_CENTER_X', '17%').replace('CPU_VALUE', str(int(all_resource['cpu_all'])))
         chat1 = chat1.replace('GPU_NAME', __('GPU总量(卡)')).replace('GPU_CENTER_X', '27%').replace('GPU_VALUE', str(int(all_resource['gpu_all'])))
         chat1 = chat1.replace('MEM_MAX', str(int(all_resource['mem_all']*2))).replace('CPU_MAX', str(int(all_resource['cpu_all']*2))).replace('GPU_MAX', str(int(all_resource['gpu_all']*2)))
