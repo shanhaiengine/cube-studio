@@ -352,7 +352,7 @@ const AppWrapper = (props: IProps) => {
                 renderSingleModule()
               }
             </div>
-            <div style={{ fontSize: 20, width:375 }}>武汉联通智算项目监控平台</div>
+            <div style={{ fontSize: 20, width:375 }}>海淘云智算项目监控平台</div>
             <div className="star-topmenu">
               <Menu mode="horizontal" selectedKeys={navSelected}>
                 {renderNavTopMenu()}
