@@ -809,8 +809,8 @@ ALL_LINKS=[
     {
         "label":"Grafana",
         "name":"grafana",
-        # "url": "/grafana/d/pod-info/pod-info?orgId=1&refresh=5s&from=now-15m&to=now"  # 访问grafana的域名地址
         "url":"http://192.168.100.33:3000/d/feet98t05tam8d/cube-s?orgId=1&from=now-15m&to=now&timezone=browser"
+        # "url": "/grafana/d/pod-info/pod-info?orgId=1&refresh=5s&from=now-15m&to=now"  # 访问grafana的域名地址
     }
 ]
 
