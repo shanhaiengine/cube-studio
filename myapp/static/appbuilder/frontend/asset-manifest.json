@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/frontend/static/css/main.017ae31f.css",
-    "main.js": "/frontend/static/js/main.e8b3540b.js",
+    "main.js": "/frontend/static/js/main.6c989769.js",
     "static/js/886.14c17cc6.chunk.js": "/frontend/static/js/886.14c17cc6.chunk.js",
     "static/css/204.20ab5efa.chunk.css": "/frontend/static/css/204.20ab5efa.chunk.css",
     "static/js/204.dc524fa7.chunk.js": "/frontend/static/js/204.dc524fa7.chunk.js",
     "static/css/697.77cbfa08.chunk.css": "/frontend/static/css/697.77cbfa08.chunk.css",
-    "static/js/697.99ad470a.chunk.js": "/frontend/static/js/697.99ad470a.chunk.js",
+    "static/js/697.8d8e580b.chunk.js": "/frontend/static/js/697.8d8e580b.chunk.js",
     "static/js/254.1d15d64b.chunk.js": "/frontend/static/js/254.1d15d64b.chunk.js",
     "static/css/397.4e58adcb.chunk.css": "/frontend/static/css/397.4e58adcb.chunk.css",
-    "static/js/397.138023e2.chunk.js": "/frontend/static/js/397.138023e2.chunk.js",
+    "static/js/397.e000ab51.chunk.js": "/frontend/static/js/397.e000ab51.chunk.js",
     "static/js/731.45b16087.chunk.js": "/frontend/static/js/731.45b16087.chunk.js",
     "static/js/529.cbb28b2a.chunk.js": "/frontend/static/js/529.cbb28b2a.chunk.js",
     "static/js/398.b65acd75.chunk.js": "/frontend/static/js/398.b65acd75.chunk.js",
@@ -20,7 +20,7 @@
     "static/js/637.d553694d.chunk.js": "/frontend/static/js/637.d553694d.chunk.js",
     "static/media/workData.png": "/frontend/static/media/workData.843bb6c11aef95dddbdb.png",
     "static/media/findData.png": "/frontend/static/media/findData.b0a05be8356e8f3f8208.png",
-    "static/media/logoCB.svg": "/frontend/static/media/logoCB.df7f4b51d2487ed16802f83201fd9c21.svg",
+    "static/media/logoCB.svg": "/frontend/static/media/logoCB.8a0e9adb597acefe55e7dc9cb8f69a57.svg",
     "static/media/loadingLogo.png": "/frontend/static/media/loadingLogo.dd6eda11e37696cdc86f.png",
     "static/media/emptyBg.png": "/frontend/static/media/emptyBg.15fdf5f39309784ac66e.png",
     "static/media/yuekeLogo.svg": "/frontend/static/media/yuekeLogo.2593fba37b08229451e8dbbfd0ec3ca7.svg",
@@ -29,6 +29,6 @@
   },
   "entrypoints": [
     "static/css/main.017ae31f.css",
-    "static/js/main.e8b3540b.js"
+    "static/js/main.6c989769.js"
   ]
 }
