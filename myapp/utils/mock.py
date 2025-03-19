@@ -78,12 +78,12 @@ def mock_data2(num):
     result = []
     models = ['volcano','yolov7','nlp-process','jina-embeddings','bge-reranker-v2-m3']
     sample = {
-        'cluster': 'dev',
-        'project': 'public',
+        'cluster': 'prd',
+        'project': 'HTY',
         'resource_group': 'public',
         'namespace':'service',
         'pod':'volcano-20250101-75459d00r2-abcde',
-        'pod_info': 'dev:service:public:volcano-20250101-75459d00r2-abcde',
+        'pod_info': 'prd:service:public:volcano-20250101-75459d00r2-abcde',
         'label': {
             'app': 'volcano-20250101',
             'pod-template-hash': '75459d47d9',
@@ -108,7 +108,7 @@ def mock_data2(num):
         pod_template_hash = str(get_str(10))
 
         data["pod"] = model +  "-20250101-" + pod_template_hash + "-" + get_str(5)
-        data["pod_info"] = "dev:service:public:" + data["pod"]
+        data["pod_info"] = "prd:service:public:" + data["pod"]
         data["label"]["app"] = model + "-20250101"
         data["label"]["pod-template-hash"] = pod_template_hash
         data["node"] = label

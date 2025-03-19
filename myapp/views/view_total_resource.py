@@ -121,14 +121,14 @@ def node_traffic():
         cluster_config = conf.get('CLUSTERS', {}).get(cluster_name, {})
         grafana_url = "//" + cluster_config.get('HOST', request.host).split('|')[-1] + conf.get('GRAFANA_CLUSTER_PATH')
         for ip in nodes:
-            node_dashboard_url = "//"+ cluster_config.get('HOST', request.host).split('|')[-1] + conf.get('K8S_DASHBOARD_CLUSTER') + '#/node/%s?namespace=default' % nodes[ip]['name']
+            # node_dashboard_url = "//"+ cluster_config.get('HOST', request.host).split('|')[-1] + conf.get('K8S_DASHBOARD_CLUSTER') + '#/node/%s?namespace=default' % nodes[ip]['name']
+            node_dashboard_url="http://192.168.100.33:3000/d/feet98t05tam8d/cube-s?orgId=1&from=now-15m&to=now&timezone=browser"
             org = nodes[ip]['labels'].get('org', 'unknown')
             enable_train = nodes[ip]['labels'].get('train', 'true')
-            # if g.user.is_admin():
-            #     ip_html = '<a target="_blank" href="%s">%s</a>' % (node_dashboard_url, ip if nodes[ip]['status']=='Ready' else f'<del>{ip}</del>')
-            # else:
-            #     ip_html = ip if nodes[ip]['status']=='Ready' else f'<del>{ip}</del>'
-            ip_html = ip if nodes[ip]['status']=='Ready' else f'<del>{ip}</del>'
+            if g.user.is_admin():
+                ip_html = '<a target="_blank" href="%s">%s</a>' % (node_dashboard_url, ip if nodes[ip]['status']=='Ready' else f'<del>{ip}</del>')
+            else:
+                ip_html = ip if nodes[ip]['status']=='Ready' else f'<del>{ip}</del>'
 
             share = nodes[ip]['labels'].get('share', 'true')
             clolr = "#FFFFFF" if share == 'true' else '#F0F0F0'
@@ -156,7 +156,8 @@ def node_traffic():
 
             message += '<tr bgcolor="%s">%s %s %s %s %s %s %s<tr>' % (
                 clolr,
-                td_html % cluster_name,
+                # td_html % cluster_name,
+                td_html % "prd",
                 td_html % org,
                 td_html % ip_html,
                 # td_html % ('<a target="blank" href="%s">%s</a>' % (grafana_url, device)),
